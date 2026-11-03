@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, responsive weather dashboard with live conditions and a 7-day forecast.">
+  <meta name="theme-color" content="#101b35">
+  <title>Atmos — Smart Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Atmos home">
+        <span class="brand-mark">✦</span>
+        <span>atmos</span>
+      </a>
+      <div class="topbar-right">
+        <span class="live-dot"></span><span class="live-label">LIVE WEATHER</span>
+        <button id="unitToggle" class="unit-toggle" type="button" aria-label="Switch temperature unit">°C <span>/</span> °F</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">YOUR WEATHER, BEAUTIFULLY CLEAR</p>
+          <h1>Forecast at a glance<span>.</span></h1>
+          <p class="intro-copy">A little sunshine, a little rain — know what the day has planned.</p>
+        </div>
+        <form id="searchForm" class="search" role="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <label class="sr-only" for="cityInput">Search city</label>
+          <input id="cityInput" type="search" placeholder="Search a city..." autocomplete="off" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <div id="status" class="status" role="status" aria-live="polite">Loading weather...</div>
+
+      <section class="weather-layout" aria-label="Weather information">
+        <article class="hero-card panel">
+          <div class="hero-top">
+            <div>
+              <p class="eyebrow muted">CURRENT WEATHER</p>
+              <h2 id="locationName">—</h2>
+              <p id="currentDate" class="subtle">—</p>
+            </div>
+            <div id="currentIcon" class="weather-icon" aria-hidden="true">☀️</div>
+          </div>
+          <div class="temperature-row">
+            <div id="temperature" class="temperature">--°</div>
+            <div class="condition-block">
+              <div id="condition" class="condition">Loading...</div>
+              <div id="feelsLike" class="subtle">Feels like --°</div>
+            </div>
+          </div>
+          <div class="hero-bottom">
+            <div><span class="tiny-label">TODAY'S HIGH</span><strong id="todayHigh">--°</strong></div>
+            <div><span class="tiny-label">TODAY'S LOW</span><strong id="todayLow">--°</strong></div>
+            <div><span class="tiny-label">LOCAL TIME</span><strong id="localTime">--:--</strong></div>
+          </div>
+        </article>
+
+        <article class="panel details-card">
+          <div class="section-heading"><div><p class="eyebrow muted">AT A GLANCE</p><h2>Weather details</h2></div><span class="heading-symbol">✧</span></div>
+          <div class="metrics-grid">
+            <div class="metric"><span class="metric-icon">💧</span><span class="metric-label">Humidity</span><strong id="humidity">--%</strong><small>Relative humidity</small></div>
+            <div class="metric"><span class="metric-icon">🌬️</span><span class="metric-label">Wind speed</span><strong id="wind">-- km/h</strong><small>At 10 metres</small></div>
+            <div class="metric"><span class="metric-icon">☀️</span><span class="metric-label">UV index</span><strong id="uv">--</strong><small id="uvLabel">Today's peak</small></div>
+            <div class="metric"><span class="metric-icon">🌡️</span><span class="metric-label">Feels like</span><strong id="feelsMetric">--°</strong><small>Perceived temperature</small></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel forecast-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow muted">PLAN AHEAD</p><h2>7-day forecast</h2></div>
+          <span class="section-note">Daily outlook</span>
+        </div>
+        <div id="forecast" class="forecast-list">
+          <div class="forecast-placeholder">Your forecast will appear here.</div>
+        </div>
+      </section>
+
+      <section class="sun-grid">
+        <article class="panel sun-card">
+          <div class="sun-symbol sunrise">🌅</div>
+          <div><p class="eyebrow muted">SUNRISE</p><strong id="sunrise">--:--</strong><small>Start the day</small></div>
+        </article>
+        <article class="panel sun-card">
+          <div class="sun-symbol sunset">🌇</div>
+          <div><p class="eyebrow muted">SUNSET</p><strong id="sunset">--:--</strong><small>Golden hour awaits</small></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Made with curiosity and a little sunshine ☀️</span>
+      <span>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
